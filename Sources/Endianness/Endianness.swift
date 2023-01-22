@@ -7,8 +7,13 @@ extension Endianness {
 
   @_alwaysEmitIntoClient
   public static var host: Self {
-    let number: UInt16 = 0x00_01
-    return number == number.littleEndian ? .little : .big
+    #if _endian(little)
+    return .little
+    #elseif _endian(big)
+    return .big
+    #else
+    #error("unknown endian on this platform!")
+    #endif
   }
 
 }
