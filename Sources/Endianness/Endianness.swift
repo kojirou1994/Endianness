@@ -18,6 +18,8 @@ extension Endianness {
 
 }
 
+extension Endianness: Sendable {}
+
 extension Endianness: CustomStringConvertible {
 
   public var description: String {
